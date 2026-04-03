@@ -5,6 +5,10 @@ public class Prova {
 	private long id;
 	private String titulo;
 
+	public Prova(String titulo) {
+		this.titulo = titulo;
+	}
+
 	public long getId() {
 		return id;
 	}
@@ -15,10 +19,6 @@ public class Prova {
 
 	public String getTitulo() {
 		return titulo;
-	}
-
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
 	}
 
 }
