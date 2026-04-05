@@ -7,14 +7,11 @@ public class ParticipanteService {
 		this.repository = repository;
 	}
 
-	public void cadastrarParticipante(String nome, String email) {
+	public Participante cadastrarParticipante(String nome, String email) {
 		if (nome == null || nome.isBlank()) {
-			System.out.println("nome inválido");
-			return;
+			throw new IllegalArgumentException("nome inválido");
 		}
 		Participante participante = new Participante(nome, email);
-		repository.salvar(participante);
-
-		System.out.println("Paricipante cadastrado: " + participante.getId());
+		return repository.salvar(participante);
 	}
 }

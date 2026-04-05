@@ -1,37 +1,28 @@
 package br.com.ucsal.olimpiadas;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class Questao {
 
 	private int id;
-	private Prova prova;
+	private Long provaId;
 	private String enunciado;
 	private List<Alternativa> alternativas;
-	
-	public Questao(Prova prova, String enuciado, List<Alternativa> alternativas) {
-		
-		if(alternativas.size()!=5) {
+
+	public Questao(Long provaId, String enuciado, List<Alternativa> alternativas) {
+
+		if (alternativas.size() != 5) {
 			throw new IllegalArgumentException("A questao deve ter 5 alternativas");
 		}
-		
-		this.prova= prova;
-		this.enunciado= enuciado;
-		this.alternativas=alternativas;
-		
-		}
+
+		this.provaId = provaId;
+		this.enunciado = enuciado;
+		this.alternativas = alternativas;
+
+	}
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public Prova getProva() {
-		return prova;
-	}
-
-	public void setProva(Prova prova) {
-		this.prova = prova;
 	}
 
 	public String getEnunciado() {
@@ -50,33 +41,25 @@ public class Questao {
 		this.alternativas = alternativas;
 	}
 
-	
+	public Alternativa buscarAlternativa(char marcada) {
+		for (Alternativa alt : alternativas) {
+			if (alt.getLetra() == marcada) {
+				return alt;
+			}
+		}
+		return null;
 	}
-//	public void setAlternativas(String[] alternativas) {
-//		if (alternativas == null || alternativas.length != 5) {
-//			throw new IllegalArgumentException("A questão deve possuir exatamente 5 alternativas.");
-//		}
-//		this.alternativas = Arrays.copyOf(alternativas, 5);
-//	}
-//
-//	public char getAlternativaCorreta() {
-//		return alternativaCorreta;
-//	}
-//
-//	public void setAlternativaCorreta(char alternativaCorreta) {
-//		this.alternativaCorreta = normalizar(alternativaCorreta);
-//	}
-//
-//	public boolean isRespostaCorreta(char marcada) {
-//		return normalizar(marcada) == alternativaCorreta;
-//	}
-//
-//	public static char normalizar(char c) {
-//		char up = Character.toUpperCase(c);
-//		if (up < 'A' || up > 'E') {
-//			throw new IllegalArgumentException("Alternativa deve estar entre A e E.");
-//		}
-//		return up;
-//	}
 
+	public Long getProvaId() {
+		return provaId;
+	}
 
+	public void setProvaId(Long provaId) {
+		this.provaId = provaId;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+}

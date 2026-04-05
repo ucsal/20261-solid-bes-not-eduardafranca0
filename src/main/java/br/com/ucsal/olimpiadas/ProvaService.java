@@ -7,14 +7,12 @@ public class ProvaService {
 		this.repository = repository;
 	}
 
-	public void cadastrarProva(String titulo) {
+	public Prova cadastrarProva(String titulo) {
 		if (titulo == null || titulo.isBlank()) {
-			System.out.println("título inválido");
-			return;
+			throw new IllegalArgumentException("título inválido");
 		}
-			Prova prova = new Prova(titulo);
-			
-			repository.salvar(prova);
-			System.out.println("Prova criada: " + prova.getId());
-		}
+		Prova prova = new Prova(titulo);
+
+		return repository.salvar(prova);
+	}
 }

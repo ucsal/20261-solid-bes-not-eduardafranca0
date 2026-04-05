@@ -5,6 +5,11 @@ public class Resposta {
 	private long questaoId;
 	private Alternativa alternativaMarcada;
 
+	public Resposta(long questaoId, Alternativa alternativaMarcada) {
+		this.questaoId = questaoId;
+		this.alternativaMarcada = alternativaMarcada;
+	}
+
 	public long getQuestaoId() {
 		return questaoId;
 	}
@@ -20,6 +25,5 @@ public class Resposta {
 	public void setAlternativaMarcada(Alternativa alternativaMarcada) {
 		this.alternativaMarcada = alternativaMarcada;
 	}
-
 
 }

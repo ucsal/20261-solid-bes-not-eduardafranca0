@@ -11,9 +11,12 @@ public class QuestaoService {
 		this.provaRepository = provaRepository;
 	}
 
-	public void cadastrarQuestao(Prova idProva, List<Alternativa> alternativas, String enuciado) {
-		
-		Prova prova = provaRepository.buscarPorId(idProva.getId());
+	public Questao cadastrarQuestao(Long idProva, List<Alternativa> alternativas, String enuciado) {
+		if (provaRepository.listar() == null) {
+			throw new IllegalArgumentException("não há provas cadastradas");
+		}
+
+		Prova prova = provaRepository.buscarPorId(idProva);
 
 		if (prova == null) {
 			throw new IllegalArgumentException("Prova não encontrada");
@@ -21,12 +24,8 @@ public class QuestaoService {
 
 		Questao questao = new Questao(idProva, enuciado, alternativas);
 
-		repository.salvar(questao);
+		return repository.salvar(questao);
 
 	}
-	/* 
-	 * criei APENAS para cadastrar a questao,
-	 * verifica a prova 
-	 * cria a questao e  registra no repository
-	 * */
+	
 }
