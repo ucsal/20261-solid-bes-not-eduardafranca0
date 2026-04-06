@@ -3,8 +3,12 @@ package br.com.ucsal.olimpiadas;
 public class Resposta {
 
 	private long questaoId;
-	private char alternativaMarcada;
-	private boolean correta;
+	private Alternativa alternativaMarcada;
+
+	public Resposta(long questaoId, Alternativa alternativaMarcada) {
+		this.questaoId = questaoId;
+		this.alternativaMarcada = alternativaMarcada;
+	}
 
 	public long getQuestaoId() {
 		return questaoId;
@@ -14,20 +18,12 @@ public class Resposta {
 		this.questaoId = questaoId;
 	}
 
-	public char getAlternativaMarcada() {
+	public Alternativa getAlternativaMarcada() {
 		return alternativaMarcada;
 	}
 
-	public void setAlternativaMarcada(char alternativaMarcada) {
+	public void setAlternativaMarcada(Alternativa alternativaMarcada) {
 		this.alternativaMarcada = alternativaMarcada;
-	}
-
-	public boolean isCorreta() {
-		return correta;
-	}
-
-	public void setCorreta(boolean correta) {
-		this.correta = correta;
 	}
 
 }
